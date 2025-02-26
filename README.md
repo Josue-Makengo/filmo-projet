@@ -1,0 +1,1 @@
+Filmo-Projet, un projet personnalisé en s'inspirant du projet fil rouge du cours les designs patterns en JavaScript
