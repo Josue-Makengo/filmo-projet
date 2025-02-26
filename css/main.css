@@ -5,7 +5,16 @@
 body {
     font-family: 'Open Sans', sans-serif;
     color: #333;
+    background: whitesmoke;
 }
+
+h1{
+    color: #672b01;
+}
+span{
+    color: red;
+}
+
 
 /* Utility class */
 .fs-16 {
@@ -49,4 +58,9 @@ body {
     width: 120px;
     object-fit: cover;
     box-shadow: 4px 5px 5px #333;
+}
+
+footer {
+    text-align: center;
+    color: black;
 }

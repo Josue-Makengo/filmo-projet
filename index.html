@@ -10,25 +10,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet" /> 
     <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="/css/main.css">
+    <!-- Lien de fichier MoviesFactory du dossier Factories qui contient le factory pattern -->
+    <script src="/js/factories/MoviesFactory.js" defer></script>
+    <!-- Liens des fichiers du dossier Models contenant le constructor pattern -->
+    <script src="/js/models/OldMovie.js" defer></script>
+    <script src="/js/models/ExternalMovie.js" defer></script>
+    <script src="/js/models/Movie.js" defer></script>
+    <!-- Templates, pour créer dynamiquement des cartes de films et les afficher sur une page web. -->
+    <script src="/js/templates/MovieCard.js" defer></script>
+    <!-- Api,  pour gérer les requêtes HTTP et la récupération des films-->
+    <script src="/js/api/Api.js" defer></script>
+    <!-- Point D'entrée -->
+    <script src="/js/App.js" defer></script>
 
     <title>Filmo Patterns - Un projet OpenClassrooms sur les design patterns</title>
 </head>
+
+
 <body>
     <header class="main-header">
-        <h1>Filmo Patterns</h1>
-        <p>Des films et des design patterns</p>
+        <h1>Filmo </h1>
+        <p>Découvrez vos films préférés</p>
     </header>
     <main class="movies-wrapper"></main>
-    <!-- Models -->
-    <script src="/js/models/Movie.js"></script>
 
-    <!-- Templates -->
-    <script src="/js/templates/MovieCard.js"></script>
-
-    <!-- Api -->
-    <script src="/js/api/Api.js"></script>
-
-    <!-- Entry point -->
-    <script src="/js/App.js"></script>
+    <footer class="footer">
+        <p class="footer__copyright">
+            &copy; <time datetime="2025">2025</time> Josue-Makengo. Tous droits réservés.
+        </p>
+    </footer> 
 </body>
 </html>
