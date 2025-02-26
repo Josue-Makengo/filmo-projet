@@ -2,8 +2,8 @@ class App {
     constructor() {
         this.$moviesWrapper = document.querySelector('.movies-wrapper')
 
-        this.moviesApi = new MovieApi('/data/new-movie-data.json')
-        this.externalMoviesApi = new MovieApi('/data/external-movie-data.json')
+        this.moviesApi = new MovieApi('./data/new-movie-data.json')
+        this.externalMoviesApi = new MovieApi('./data/external-movie-data.json')
     }
 
     async main() {
