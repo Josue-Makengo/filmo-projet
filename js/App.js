@@ -1,30 +1,40 @@
+
+import MoviesFactory from '../js/factories/MoviesFactory.js';
+
 class App {
     constructor() {
-        this.$moviesWrapper = document.querySelector('.movies-wrapper')
-
-        this.moviesApi = new MovieApi('./data/new-movie-data.json')
-        this.externalMoviesApi = new MovieApi('./data/external-movie-data.json')
+        this.$moviesWrapper = document.querySelector('.movies-wrapper');
+        this.moviesApi = new MovieApi();
     }
 
     async main() {
-        const moviesData = await this.moviesApi.get()
-        const externalMoviesData = await this.externalMoviesApi.get()
-        
-        const Movies = moviesData.map(movie => new MoviesFactory(movie, 'newApi'))
-        const ExternalMovies = externalMoviesData.map(movie => new MoviesFactory(movie, 'externalApi'))
+        try {
+            const moviesData = await this.moviesApi.getMovies();
+            console.log("Données reçues :", moviesData);
 
-        console.log(Movies)
+            if (!moviesData || !Array.isArray(moviesData.results)) {
+                console.error("Les données des films sont invalides ou absentes !");
+                return; 
+            }
 
-        const FullMovies = Movies.concat(ExternalMovies)
+            const movieInstances = await Promise.all(
+                moviesData.results.map(async movieData => {
+                    const movie = new MoviesFactory(movieData, 'tmdbApi');
+                    movie.trailerUrl = await this.moviesApi.getTrailer(movie.id);
+                    return movie;
+                })
+            );
 
-            FullMovies.forEach(movie => {
-                const Template = new MovieCard(movie)
-                this.$moviesWrapper.appendChild(
-                    Template.createMovieCard()
-                )
-            })
+            movieInstances.forEach(movie => {
+                const movieCardTemplate = new window.MovieCard(movie);
+                this.$moviesWrapper.appendChild(movieCardTemplate.createMovieCard());
+            });
+        } catch (error) {
+            console.error("Erreur lors de la récupération des films :", error);
+        }
     }
 }
 
-const app = new App()
-app.main()
+
+const app = new App();
+app.main();

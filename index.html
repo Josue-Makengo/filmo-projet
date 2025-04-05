@@ -10,18 +10,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet" /> 
     <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/main.css">
-    <!-- Lien de fichier MoviesFactory du dossier Factories qui contient le factory pattern -->
-    <script src="./js/factories/MoviesFactory.js" defer></script>
-    <!-- Liens des fichiers du dossier Models contenant le constructor pattern -->
-    <script src="./js/models/OldMovie.js" defer></script>
-    <script src="./js/models/ExternalMovie.js" defer></script>
-    <script src="./js/models/Movie.js" defer></script>
-    <!-- Templates, pour créer dynamiquement des cartes de films et les afficher sur une page web. -->
-    <script src="./js/templates/MovieCard.js" defer></script>
-    <!-- Api,  pour gérer les requêtes HTTP et la récupération des films-->
-    <script src="./js/api/Api.js" defer></script>
-    <!-- Point D'entrée -->
-    <script src="./js/App.js" defer></script>
+    <!-- Scripts -->
+    <script type="module"  src="./js/config/config.js" defer></script>
+    <script type="module" src="./js/api/Api.js" defer></script>
+    <script type="module" src="./js/factories/MoviesFactory.js" defer></script> 
+    <script type="module" src="./js/api/MovieApi.js" defer></script>   
+    <script type="module" src="./js/models/TMDBMovie.js" defer></script>  
+    <script  src="./js/templates/MovieCard.js" defer></script>
+    <script type="module"  src="./js/App.js" defer></script>
+    <script type="module"  src="./js/modale/modale.js" defer></script>
+
+    
 
     <title>Filmo Projet</title>
 </head>
@@ -34,10 +33,18 @@
     </header>
     <main class="movies-wrapper"></main>
 
-    <footer class="footer">
+    <footer class="footer" aria-label="footer">
         <p class="footer__copyright">
             &copy; <time datetime="2025">2025</time> Josue-Makengo. Tous droits réservés.
         </p>
     </footer> 
+
+    <div id="trailer-modal" class="modal" role="modale-bande-d'annonce">
+        <div class="modal-content" aria-label="modal-content">
+          <span class="close" aria-label="Fermer la fenêtre modale">&times;</span>
+          <iframe id="trailer-iframe" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+      
 </body>
 </html>

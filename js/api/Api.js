@@ -1,31 +1,17 @@
+
 class Api {
-    /**
-     * 
-     * @param {string} url 
-     */
-    constructor(url) {
-        this._url = url
+    constructor(baseUrl) {
+        this.baseUrl = baseUrl;
     }
 
     async get() {
-        return fetch(this._url)
-            .then(res => res.json())
-            .then(res => res.data)
-            .catch(err => console.log('an error occurs', err))
+        try {
+            const response = await fetch(this.baseUrl);
+            if (!response.ok) throw new Error('Erreur réseau');
+            return await response.json();
+        } catch (error) {
+            console.error("An error occurred:", error);
+        }
     }
 }
-
-
-class MovieApi extends Api {
-    /**
-     * 
-     * @param {string} url 
-     */
-    constructor(url) {
-        super(url)
-    }
-
-    async getMovies() {
-        return await this.get()
-    }
-}
+window.Api = Api;

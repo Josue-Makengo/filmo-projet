@@ -1,15 +1,16 @@
-class MoviesFactory {
-    constructor(data, type) {
-        // Si le type correspond à l'ancienne API, alors retourne moi l'ancien formatge 
-        if (type === 'oldApi') {
-            return new Oldmovie(data)
-        // Sinon retourne moi le nouveau formatage
-        } else if (type === 'newApi') {
-            return new Movie(data)
-        } else if (type === 'externalApi') {
-            return new ExternalMovie(data)
-        } else {
-            throw 'Unknown type format'
+import TMDBMovie from '../models/TMDBMovie.js';
+
+export default class MoviesFactory {
+    constructor(data, source) {
+        return this.createMovie(data, source); 
+    }
+
+    createMovie(data, source) {
+        switch (source) {
+            case 'tmdbApi':
+                return new TMDBMovie(data);
+            default:
+                throw new Error(`Source inconnue : ${source}`);
         }
     }
 }
